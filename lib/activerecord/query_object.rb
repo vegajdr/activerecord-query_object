@@ -4,6 +4,7 @@ require 'active_record'
 require 'activerecord/query_object/version'
 require 'activerecord/query_object/unable_to_compose_queries'
 require 'activerecord/query_object/null'
+require 'activerecord/query_object/record'
 
 module ActiveRecord
   class QueryObject
@@ -25,7 +26,7 @@ module ActiveRecord
       def initial_scope
         return self::RESOURCE.all if defined?(self::RESOURCE)
 
-        ActiveRecord::Base.none
+        Record.none
       end
     end
 
@@ -96,7 +97,7 @@ module ActiveRecord
       klass = self.class
       return klass::RESOURCE.all if defined?(klass::RESOURCE)
 
-      ActiveRecord::Base.none
+      Record.none
     end
 
     attr_reader :scope, :params
