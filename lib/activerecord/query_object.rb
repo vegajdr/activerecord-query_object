@@ -53,6 +53,22 @@ module ActiveRecord
 
     alias merge |
 
+    def each
+      cached_query.each
+    end
+
+    def count
+      cached_query.count
+    end
+
+    def first
+      cached_query.first
+    end
+
+    def to_a
+      cached_query.to_a
+    end
+
     def exists?
       return cached_query.exists? if relation?
 
