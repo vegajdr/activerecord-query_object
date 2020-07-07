@@ -2,6 +2,8 @@
 
 module ActiveRecord
   class QueryObject
-    VERSION = '0.1.0'
+    class Record < ActiveRecord::Base
+      self.abstract_class = true
+    end
   end
 end
